@@ -1,0 +1,22 @@
+{
+  "name": "node-login-logout",
+  "description": "A basic login logout app using ExpressJS and Mongoose",
+  "version": "0.0.1",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thehardeepsharma/node-login-logout"
+  },
+  "author": "hardeep@pluspair.com",
+  "license": "MIT",
+  "homepage": "http://www.pluspair.com",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "connect-flash": "^0.1.1",
+    "express": "^4.15.3",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.15.3",
+    "mongoose": "4.10.8",
+    "twig": "^1.10.5"
+  }
+}

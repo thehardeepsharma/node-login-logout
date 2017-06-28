@@ -1,0 +1,35 @@
+{% include 'includes/header.twig' %}
+<div class="row">
+	<h1>
+		<span>User List</span>
+		<span class="pull-right"><a href="/user/new" class="btn btn-primary">Add User</a></span>
+	</h1>
+	<hr/>
+	<div class="col-md-12">
+		{{ messages() }}
+		<table class="table table-condensed">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Published</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>	
+				{% for user in users %}
+					<tr>
+						<td><a href="#">{{ user.username|capitalize }}</a></td>
+						<td class="date">
+							<p>Published: {{ user.created_at }}</p>
+						</td>
+						<td>
+							<a href="/user/edit/{{ user._id }}" class="btn btn-primary">Edit User</a>
+							<a href="/user/delete/{{ user._id }}" class="btn btn-danger">Delete User</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</body>
+		</table>
+	</div>
+</div>
+{% include 'includes/footer.twig' %}

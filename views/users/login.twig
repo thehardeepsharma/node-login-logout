@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Node Express Mongoose Mondodb Blog</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/blog.css">
+    </head>
+    <body>
+        <div class="content container login-page">
+			<div class="row">
+				<div class="col-md-4"></div>
+				<div class="col-md-4">
+					{{ messages() }}
+					<form method="post" action="/authenticate"> 
+						<div><input type="hidden" name="csrf" value="csrf" /></div>
+						<div class="form-group">
+							<label for="title">Username:</label>
+							<input type="text" class="form-control" name="username" value="{{ username }}" >
+						</div>
+						<div class="form-group">
+							<label for="title">Password:</label>
+							<input type="password" class="form-control" name="password" value="" >
+						</div>
+						<input type="submit" value="Login" name="submit" class="btn btn-primary"/>
+					</form>
+				</div>
+				<div class="col-md-4"></div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+{% include 'includes/header.twig' %}
+<div class="row">
+	<div class="col-md-6">
+		<form method="post" action="/user/update/{{ user._id }}"> 
+			<input type="hidden" name="csrf" value="csrf" />
+			<input type="hidden" name="user[_id]" value="{{ user._id }}" />
+			<div class="form-group">
+				<label for="title">Title:</label>
+				<input type="text" class="form-control" name="user[username]" value="{{ user.username }}" >
+			</div>			
+			<input type="submit" value="Update User" name="submit" class="btn btn-primary"/>
+		</form>
+	</div>
+</div>
+{% include 'includes/footer.twig' %}
