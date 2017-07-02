@@ -23,33 +23,8 @@ module.exports = function(app) {
 	});
 	
 	// Show user Form for adding
-	app.get('/user/new', requireLogin, function(req, res) {
-		userModule.add(req,res);
-	});
-	
-	// Save an user
-	app.post('/user/save', requireLogin, function(req, res) {
-		userModule.save(req,res);		
-	});
-	
-	// View an user
-	app.get('/user/view/:id', requireLogin, function(req, res) {
-		userModule.view(req,res);
-	});
-		
-	// Edit an user
-	app.get('/user/edit/:id', requireLogin, function(req, res) {
-		userModule.edit(req,res);
-	});
-	
-	// Update user
-	app.post('/user/update/:id', requireLogin, function(req, res) {
-		userModule.update(req,res);
-	});
-	
-	// Delete an user
-	app.get('/user/delete/:id', requireLogin, function(req, res) {
-		userModule.delete(req,res);		
+	app.get('/dashboard', requireLogin, function(req, res) {
+		userModule.dashboard(req,res);
 	});
 	
 	function requireLogin (req, res, next) {

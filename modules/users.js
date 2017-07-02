@@ -5,6 +5,10 @@ module.exports = {
 		res.render('users/login.twig');
 	},
 	
+	dashboard: function(req,res) {
+		res.render('users/dashboard.twig');
+	},
+	
 	logout: function(req,res) {
 		req.session.destroy(function(err){
 			if(err) {
@@ -29,7 +33,7 @@ module.exports = {
 				} else {
 					req.flash('success', 'Successfull logged in .');
 					req.session.user = user;  // Store data in session
-					return res.redirect('/users');
+					return res.redirect('/dashboard');
 				}
 			}
 			return res.redirect('/?username='+ username);
@@ -43,67 +47,13 @@ module.exports = {
 			if(err) {
 				console.log(err);
 			} else {
-				res.render('users/index.twig', {
+				res.render('users/list.twig', {
 					title: 'List of Users',
 					users: users,
 					username: username
 				});
 			}
 		});
-	},
+	},	
 	
-	add: function(req,res) { 
-		res.render('users/new.twig', {
-			title: 'New User',
-		});
-	},
-	
-	save: function(req,res) {
-		var userClass = new User(req.body.user);
-		userClass.save(function(err) {
-			if(err) {
-				req.flash('error', 'User not added');
-			} else {
-				req.flash('info', 'User added successfully');				
-			}
-			res.redirect('/users');
-		});
-	},
-	
-	edit: function(req,res) {
-		User.findOne({ _id : req.params.id }, function(err,userData) {
-			if (err) console.log(err);
-			if (!userData) return next(new Error('Failed to load user ' + req.params.id));
-			res.render('users/edit.twig', {
-				user: userData
-			});
-		});
-	},
-	
-	update: function(req,res) {
-		objectId = req.body.user._id;
-		if(objectId != '') {
-			User.findOneAndUpdate({_id: objectId }, req.body.user, function(err) {
-				if(err) {
-					req.flash('error', 'User not updated.');
-				} else {
-					req.flash('info', 'User updated successfully');
-				}
-				res.redirect('/users');
-			});
-		}
-	},
-	
-	delete: function(req,res) {
-		if(req.params.id != '') {
-			User.findByIdAndRemove({_id: req.params.id }, function(err) {
-				if(err) {
-					req.flash('error', 'User not deletion');
-				} else {
-					req.flash('info', 'User Deleted successfully');
-				}
-				res.redirect('/users');
-			});
-		}
-	}
 }
